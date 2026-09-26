@@ -1,0 +1,4 @@
+airflow/logs/
+
+# Large raw datasets
+dbs/*.csv
