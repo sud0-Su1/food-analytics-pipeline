@@ -1,0 +1,8 @@
+staging and mart
+integral vs source to connect aws to snowflake
+etl vs etl
+medallion arch
+batch vs streaming
+what is dbt
+materialization [view, table, incremental]
+dimensional modeling - the star schema structure [ fatcs events+measure, di: the conterxt, why a star]
