@@ -1,13 +1,18 @@
-# Airflow 3.x image + Snowflake provider + FAB auth (for admin/admin login) + dbt venv + openai.
+# Airflow 3.x image + Snowflake provider + FAB auth + dbt and Ollama AI environments.
 # Bump the tag to the newest 3.x if you like (e.g. 3.0.4 / 3.1.x).
 FROM apache/airflow:3.0.3
 
-# Providers: snowflake (COPY task), fab (classic username/password login), openai (AI task).
+# Providers: snowflake (COPY task) and fab (classic username/password login).
 RUN pip install --no-cache-dir \
       apache-airflow-providers-snowflake \
-      apache-airflow-providers-fab \
-      openai
+      apache-airflow-providers-fab
 
 # dbt in its own venv so it never clashes with Airflow's deps. DAG calls /opt/airflow/dbt_venv/bin/dbt
 RUN python -m venv /opt/airflow/dbt_venv && \
     /opt/airflow/dbt_venv/bin/pip install --no-cache-dir "dbt-snowflake==1.8.*"
+
+# Keep the AI app dependencies isolated from Airflow's package set.
+RUN python -m venv /opt/airflow/ai_venv && \
+            /opt/airflow/ai_venv/bin/pip install --no-cache-dir \
+      ollama snowflake-connector-python python-dotenv \
+                  streamlit numpy pandas pyarrow

@@ -6,3 +6,5 @@ batch vs streaming
 what is dbt
 materialization [view, table, incremental]
 dimensional modeling - the star schema structure [ fatcs events+measure, di: the conterxt, why a star]
+embedding
+why rag is importamnt in context window

@@ -1,4 +1,10 @@
 airflow/logs/
+airflow/.env
+ai/.env
+ai/example.env
+ai/review_embeddings.parquet
+__pycache__/
+.DS_Store
 
 # Large raw datasets
 dbs/*.csv
