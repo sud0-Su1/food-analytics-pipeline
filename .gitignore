@@ -6,5 +6,8 @@ ai/review_embeddings.parquet
 __pycache__/
 .DS_Store
 
+# Local AWS/Snowflake credentials and integration details
+/STORAGE_AWS_IAM_USER_ARN: arn:aws:iam::7.TXT
+
 # Large raw datasets
 dbs/*.csv

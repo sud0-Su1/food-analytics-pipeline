@@ -218,7 +218,7 @@ The compose file mounts the project folders and starts applications, but Ollama 
 - `text_to_sql.py` contains a hard-coded schema prompt whose table/column names do not fully match the dbt models (for example singular/plural and some dimensions). Update it to match the deployed Snowflake schema before relying on generated SQL.
 - The review-insights SQL is at repository root, outside dbt's `models/` directory, so the DAG's `dbt build` does not materialize it.
 - The RAG app's Parquet cache is static once created; delete `ai/review_embeddings.parquet` to force a fresh sample and embeddings.
-- The repository contains generated logs, local configuration, and an AWS/Snowflake access artifact. Check the Git index and remove/rotate any credentials or access identifiers that were ever committed. Do not copy secrets into documentation or commit them in future changes.
+- AWS/Snowflake credentials were previously exposed in the repository history. The credential files have been removed from the rewritten history, but treat every value as compromised and rotate or revoke it. Old clones or cached copies may still contain the original data. Keep local environment files out of Git and use placeholders in any example configuration.
 
 ## License
 
